@@ -1,0 +1,7 @@
+{
+  "name": "SalidaEasy",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

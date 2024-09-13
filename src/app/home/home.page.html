@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Conexión Microsip</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="connectToMicrosip()">
+    <ion-item>
+      <ion-label position="floating">Servidor</ion-label>
+      <ion-input [(ngModel)]="server" name="server"  required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Ruta de la Base de Datos</ion-label>
+      <ion-input [(ngModel)]="databasePath" name="databasePath"  required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input [(ngModel)]="username" name="username" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input [(ngModel)]="password" name="password" type="password" required></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" type="submit">Conectar a Microsip</ion-button>
+  </form>
+</ion-content>

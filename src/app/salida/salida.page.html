@@ -1,0 +1,78 @@
+<!-- salida.page.html -->
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Seleccionar Datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    
+    <ion-label>Seleccionar Concepto</ion-label>
+    <ion-select [(ngModel)]="selectedConcepto">
+      <ion-select-option *ngFor="let concepto of datos.conceptos" [value]="concepto.CONCEPTO_IN_ID">
+        {{ concepto.NOMBRE }} <!-- Asegúrate de que `descripcion` existe en el objeto concepto -->
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Seleccionar Almacén</ion-label>
+    <ion-select [(ngModel)]="selectedAlmacen">
+      <ion-select-option *ngFor="let almacen of datos.almacenes" [value]="almacen.ALMACEN_ID">
+         {{ almacen.NOMBRE }} <!-- Asegúrate de que `nombre` existe en el objeto almacen -->
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>Seleccionar Destino</ion-label>
+    <ion-select [(ngModel)]="selectedDestino">
+      <ion-select-option *ngFor="let almacen of datos.almacenes" [value]="almacen.ALMACEN_ID">
+        {{ almacen.NOMBRE }} <!-- Asegúrate de que `nombre` existe en el objeto almacen -->
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-label>Descripcion</ion-label>
+  <ion-textarea  [(ngModel)]="descripcion" labelPlacement="floating" fill="solid" ></ion-textarea>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3"><strong>CLAVE</strong></ion-col>
+      <ion-col size="3"><strong>NOMBRE</strong></ion-col>
+      <ion-col size="3"><strong>UNIDAD</strong></ion-col>
+    </ion-row>
+  
+    <ion-row *ngFor="let r of renglones; let i = index">
+      <ion-col size="3">
+        <ion-input
+          [(ngModel)]="r.claveArticulo"
+          (ngModelChange)="obtenerArticulo(i)"          placeholder="Introduce la clave">
+        </ion-input>
+      </ion-col>
+      <ion-col  size="3">
+        <ion-input
+        
+        value="r.articuloId"
+          
+          [(ngModel)]="r.nombreArticulo"
+          placeholder="Introduce la clave">
+        </ion-input>
+      </ion-col>
+      <ion-col size="3">
+        <ion-input
+        (keydown.enter)="sumarUnidades()" 
+          [(ngModel)]="r.unidadArticulo" 
+          placeholder="Unidad del artículo">
+          
+        </ion-input>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-button expand="full" color="primary" (click)="prepararDatosParaEnvio()">
+    Enviar Datos
+  </ion-button>
+  <ion-button expand="full"  (click)="enviarDatos()">Enviar</ion-button>
+
+  
+  
+
+</ion-content>
